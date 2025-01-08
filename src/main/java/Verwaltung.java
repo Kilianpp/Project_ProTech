@@ -31,6 +31,7 @@ public class Verwaltung{
 
     public void aktivitaetHinzufügen(Aktivitaet aktivitaet){            //hinzufügen einer Aktivität in die Liste
         ListeAktivitaet.add(aktivitaet);
+        gefilterteListe.add(aktivitaet);
         materialLader.listeSpeichern(ListeAktivitaet);                  //Notwendig bei abspeichern in Textdokument
         if(filterSpeicher != null){
             filtern(filterSpeicher);

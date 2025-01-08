@@ -286,5 +286,13 @@
     "strecke": 1234,
     "kalorienverbrauch": 14397.0,
     "aktivitaetspunkte": 287.94
+  },
+  {
+    "name": "Rudern",
+    "dateStr": "08-01-2025",
+    "dauer": 1234,
+    "strecke": 12345,
+    "kalorienverbrauch": 123450.0,
+    "aktivitaetspunkte": 2469.0
   }
 ]
