@@ -294,5 +294,29 @@
     "strecke": 12345,
     "kalorienverbrauch": 123450.0,
     "aktivitaetspunkte": 2469.0
+  },
+  {
+    "name": "Laufen",
+    "dateStr": "08-01-2025",
+    "dauer": 22,
+    "strecke": 12333,
+    "kalorienverbrauch": 246660.0,
+    "aktivitaetspunkte": 4933.2
+  },
+  {
+    "name": "Laufen",
+    "dateStr": "08-01-2025",
+    "dauer": 345,
+    "strecke": 123,
+    "kalorienverbrauch": 2460.0,
+    "aktivitaetspunkte": 49.2
+  },
+  {
+    "name": "Laufen",
+    "dateStr": "08-01-2025",
+    "dauer": 5,
+    "strecke": 643,
+    "kalorienverbrauch": 12860.0,
+    "aktivitaetspunkte": 257.2
   }
 ]

@@ -24,13 +24,16 @@ public class Anwendungsfenster extends JFrame {
     private JLabel LabelFilter;
     private JComboBox comboBoxSortieren;
     private JButton buttonSortieren;
+    private JButton clearButton;
     private Verwaltung verwaltung;
     private final DefaultTableModel datenmodell;
     private boolean absteigend = false;
+    private final Fehlermeldung fehlermeldung;
 
 
     public Anwendungsfenster(Verwaltung verwaltung) {//Konstruktor
         this.verwaltung = verwaltung;
+        fehlermeldung = new Fehlermeldung();
         setTitle("Fitnesstracker");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(775, 300);
@@ -98,27 +101,30 @@ public class Anwendungsfenster extends JFrame {
             displayTable(gefilterteListe);
 
         });
-        comboBoxSortieren.addActionListener(e-> {
+        comboBoxSortieren.addActionListener(e -> {
             sortieren();
         });
 
-        buttonSortieren.addActionListener(e-> {
-            if(absteigend){
+        buttonSortieren.addActionListener(e -> {
+            if (absteigend) {
                 buttonSortieren.setText("Aufsteigend");
                 absteigend = false;
-            }
-            else{
+            } else {
                 buttonSortieren.setText("Absteigend");
                 absteigend = true;
             }
             sortieren();
+        });
+        clearButton.addActionListener(e ->
+        {verwaltung.löschen();
+            displayTable(verwaltung.getListe());
         });
     }
 
     private void sortieren() {
         Sortierer sortierer = null;
         String wertSortierer = comboBoxSortieren.getSelectedItem().toString();
-        switch(wertSortierer){
+        switch (wertSortierer) {
             case "Datum" -> sortierer = SortiererBuilder.DATUMSORTIERER;
             case "Dauer" -> sortierer = SortiererBuilder.DAUERSORTIERER;
             case "Strecke" -> sortierer = SortiererBuilder.STRECKENSORTIERER;
@@ -126,7 +132,7 @@ public class Anwendungsfenster extends JFrame {
             case "Punkte" -> sortierer = SortiererBuilder.PUNKTESORTIERER;
             case "Keine" -> sortierer = SortiererBuilder.DEFAULTSORTIERER;
         }
-        if(sortierer==null){
+        if (sortierer == null) {
             System.out.println("Fehler beim sortieren (wertSortierer)" + wertSortierer);
             return;
         }
@@ -156,8 +162,46 @@ public class Anwendungsfenster extends JFrame {
 
     private boolean prüfeWerte() {
         //TODO Hanne
+        int index = comboBoxAktivität.getSelectedIndex();
+        if (index == 0) {
+            fehler("Aktivität wählen");//Fehler ausgeben
+            return false;
+        }
+        String datum = textFieldDatum.getText();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try {
+            LocalDate Daturm = LocalDate.parse(datum, formatter);
+
+        } catch (Exception e) {
+            fehler("Datum falsch");
+            return false;
+        }//Fehler ausgeben
+
+
+        try {
+            int strecke = Integer.parseInt(textFieldStrecke.getText());
+
+        } catch (Exception e) {
+            fehler("Strecke falsch");
+            return false;
+        }//Fehler ausgeben
+
+
+        try {
+            int dauer = Integer.parseInt(textFieldDauer.getText());
+
+        } catch (Exception e) {
+            fehler("Dauer falsch");
+            return false;
+        }//Fehler ausgeben
+
         return true;
     }
+
+    private void fehler(String nachricht) {
+        fehlermeldung.fehlerfenster(nachricht);
+    }
+
 }
 
 

@@ -70,6 +70,8 @@ public class Verwaltung{
         sortspeicher = s1;
         return gefilterteListe;
     }
+    public void löschen(){//TODO Ben
+        System.out.println("Liste löschen implementieren");}
 
 
 
@@ -78,8 +80,6 @@ public class Verwaltung{
         Anwendungsfenster anwendungsfenster = new Anwendungsfenster(verwaltung);
         anwendungsfenster.setDatum();
         anwendungsfenster.setVisible(true);
-        Fehlermeldung fehlermeldung = new Fehlermeldung(verwaltung);
-        fehlermeldung.setVisible(true);
     }
 
 }
