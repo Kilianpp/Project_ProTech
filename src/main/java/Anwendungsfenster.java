@@ -115,6 +115,7 @@ public class Anwendungsfenster extends JFrame {
             }
             sortieren();
         });
+
         clearButton.addActionListener(e ->
         {verwaltung.löschen();
             displayTable(verwaltung.getListe());

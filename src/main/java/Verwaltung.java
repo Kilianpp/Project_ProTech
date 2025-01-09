@@ -70,8 +70,14 @@ public class Verwaltung{
         sortspeicher = s1;
         return gefilterteListe;
     }
+
     public void löschen(){//TODO Ben
-        System.out.println("Liste löschen implementieren");}
+    ListeAktivitaet.clear();
+    gefilterteListe.clear();
+    if(materialLader != null){
+        materialLader.listeSpeichern(ListeAktivitaet);                    //nur bei speichern in Textdatei
+        }
+    }
 
 
 
