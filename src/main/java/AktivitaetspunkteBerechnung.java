@@ -5,23 +5,6 @@ public class AktivitaetspunkteBerechnung {
      */
 
     private static final int AKTIVITAETSPUNKT_PRO_KALORIEN_FACTOR = 50; // 1 Aktivitätspunkt = 50 verbrannte Kalorien
-    private static final int SEKUNDEN_PRO_MINUTE = 60;
-
-
-
-    public AktivitaetspunkteBerechnung(){
-    }
-
-    /*public berechneGeschwindigkeit(int strecke, int dauer) {
-        if (strecke < 0) {
-            throw new IllegalArgumentException("Die Strecke darf nicht negativ sein.");
-        }
-        if (dauer <= 0) {
-            throw new IllegalArgumentException("Die Zeit in Minuten muss größer als 0 sein.");
-        }
-        double geschwindigkeit = (double) strecke / (dauer * SEKUNDEN_PRO_MINUTE); // Strecke / Zeit in Sekunden
-        return geschwindigkeit;
-    }*/
 
     public double berechneKalorienverbrauch(String sportart, int dauer, int strecke) {
         if (sportart == null || sportart.isEmpty()) {
@@ -30,23 +13,35 @@ public class AktivitaetspunkteBerechnung {
         if (dauer <= 0) {
             throw new IllegalArgumentException("Die Zeit in Minuten muss größer als 0 sein.");
         }
-        double kalorienProMinute = getKalorienProMinute(sportart.toLowerCase());
-        double geschwindigkeit = (double) strecke / (dauer *SEKUNDEN_PRO_MINUTE);
-        return Math.round(kalorienProMinute * dauer * 100 * geschwindigkeit);  // Zwei Dezimalstellen
+        if (strecke <= 0) {
+            throw new IllegalArgumentException("Die Strecke muss größer als 0 sein.");
+        }
+
+        double kalorienProKilometer = getKalorienProKilometer(sportart.toLowerCase());
+        double kilometer = strecke / 1000.0; // Strecke in Meter umwandeln
+
+        // Kalorienverbrauch basierend auf Strecke und Kalorien pro Kilometer
+        double kalorienVerbrauchStrecke = kalorienProKilometer * kilometer;
+
+        // Gewichtung: Strecke und Dauer
+        return Math.round((kalorienVerbrauchStrecke - dauer) * 100) / 100.0;
     }
+
 
     public double berechneAktivitaetspunkte(double kalorien) {
-        return kalorien / AKTIVITAETSPUNKT_PRO_KALORIEN_FACTOR;
+        return Math.floor(kalorien / AKTIVITAETSPUNKT_PRO_KALORIEN_FACTOR);
+        // Pro 50 Kalorien wird 1 Aktivitätspunkt vergeben
     }
 
-    private double getKalorienProMinute(String sportart) {
+    private double getKalorienProKilometer(String sportart) {
         return switch (sportart) {
-            case "laufen" -> 12.0;
-            case "radfahren" -> 7.0;
-            case "schwimmen" -> 10.0;
-            case "rudern" -> 6.0;
-            default -> throw new IllegalArgumentException("Unbekannte Sportart: " + sportart + ". Unterstützt werden: 'laufen', 'radfahren', 'schwimmen' ,'rudern'.");
+            case "laufen" -> 70.0;       // Kalorien pro Kilometer
+            case "radfahren" -> 35.0;
+            case "schwimmen" -> 90.0;
+            case "rudern" -> 40.0;
+            default ->
+                    throw new IllegalArgumentException("Unbekannte Sportart: " + sportart + ". Unterstützt werden: 'laufen', 'radfahren', 'schwimmen', 'rudern'.");
         };
     }
-}
 
+}
