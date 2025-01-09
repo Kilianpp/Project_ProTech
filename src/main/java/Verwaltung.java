@@ -71,7 +71,7 @@ public class Verwaltung{
         return gefilterteListe;
     }
 
-    public void löschen(){//TODO Ben
+    public void löschen(){
     ListeAktivitaet.clear();
     gefilterteListe.clear();
     if(materialLader != null){
