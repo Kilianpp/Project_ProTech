@@ -25,6 +25,7 @@ public class Anwendungsfenster extends JFrame {
     private JComboBox comboBoxSortieren;
     private JButton buttonSortieren;
     private JButton clearButton;
+    private JCheckBox speichernCheck;
     private Verwaltung verwaltung;
     private final DefaultTableModel datenmodell;
     private boolean absteigend = false;
@@ -79,7 +80,7 @@ public class Anwendungsfenster extends JFrame {
                 int strecke = Integer.parseInt(textFieldStrecke.getText());
                 int dauer = Integer.parseInt(textFieldDauer.getText());
                 Aktivitaet aktivitaet = new Aktivitaet(aktivitätsname, datum, dauer, strecke);
-                verwaltung.aktivitaetHinzufügen(aktivitaet);
+                verwaltung.aktivitaetHinzufügen(aktivitaet, speichernCheck.isSelected());
                 displayTable(verwaltung.getListe());
             }
         });
@@ -90,6 +91,7 @@ public class Anwendungsfenster extends JFrame {
         addColumn("Kalorienverbrauch");
         addColumn("Punkte");
         table1.setModel(datenmodell);
+
 
         anwendenButton.addActionListener(e -> {
             String filterCombobox = comboBoxFilter.getSelectedItem().toString();
@@ -153,6 +155,7 @@ public class Anwendungsfenster extends JFrame {
         datenmodell.addColumn(spaltenName);
     }
 
+
     public void displayTable(List<Aktivitaet> liste) {
         datenmodell.setRowCount(0);
         for (Aktivitaet aktivitaet : liste) {
@@ -162,7 +165,6 @@ public class Anwendungsfenster extends JFrame {
     }
 
     private boolean prüfeWerte() {
-        //TODO Hanne
         int index = comboBoxAktivität.getSelectedIndex();
         if (index == 0) {
             fehler("Aktivität wählen");//Fehler ausgeben
