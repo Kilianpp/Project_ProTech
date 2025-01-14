@@ -20,6 +20,11 @@ public class Verwaltung{
 
         materialLader = new RessourcenLader();                            //Notwendig bei abspeichern in Textdokument
         ListeAktivitaet = new ArrayList<>(materialLader.listeLesen());      //Notwendig bei abspeichern in Textdokument
+        if(ListeAktivitaet.isEmpty()){
+            aktivitaetHinzufügen(new Aktivitaet("Laufen", "04-05-2000", 30, 5000), false);
+            aktivitaetHinzufügen(new Aktivitaet("Schwimmen", "05-05-2000", 15, 750), false);
+            aktivitaetHinzufügen(new Aktivitaet("Radfahren", "06-05-2000", 120, 64), false);
+        }
         gefilterteListe = new ArrayList<>(ListeAktivitaet);
 
     }
