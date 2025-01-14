@@ -1,4 +1,5 @@
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 
 public class Verwaltung{
-   private final ArrayList<Aktivitaet> ListeAktivitaet;
+   private ArrayList<Aktivitaet> ListeAktivitaet;
    private final RessourcenLader materialLader;                         //bei abspeichern in Textdokument notwendig (zeile drüber einkommentieren)
     private List<Aktivitaet> gefilterteListe = new ArrayList<>(); //erzeugen einer neuen gefilterten Liste
     private Sortierer sortspeicher = null;
@@ -16,10 +17,14 @@ public class Verwaltung{
 
     public Verwaltung()                                                 // konstruktor
     {
-        //ListeAktivitaet = new ArrayList<Aktivitaet>();                  //erzeugen der ArrayList
 
         materialLader = new RessourcenLader();                            //Notwendig bei abspeichern in Textdokument
         ListeAktivitaet = new ArrayList<>(materialLader.listeLesen());      //Notwendig bei abspeichern in Textdokument
+        if(ListeAktivitaet.isEmpty()){
+            aktivitaetHinzufügen(new Aktivitaet("Laufen", "04-05-2000", 30, 5000), false);
+            aktivitaetHinzufügen(new Aktivitaet("Schwimmen", "05-05-2000", 15, 750), false);
+            aktivitaetHinzufügen(new Aktivitaet("Radfahren", "06-05-2000", 120, 64), false);
+        }
         gefilterteListe = new ArrayList<>(ListeAktivitaet);
 
     }
@@ -29,10 +34,12 @@ public class Verwaltung{
 
     }
 
-    public void aktivitaetHinzufügen(Aktivitaet aktivitaet){            //hinzufügen einer Aktivität in die Liste
+    public void aktivitaetHinzufügen(Aktivitaet aktivitaet, boolean checkSpeichern){            //hinzufügen einer Aktivität in die Liste
         ListeAktivitaet.add(aktivitaet);
         gefilterteListe.add(aktivitaet);
-        materialLader.listeSpeichern(ListeAktivitaet);                  //Notwendig bei abspeichern in Textdokument
+        if(checkSpeichern){
+        materialLader.listeSpeichern(ListeAktivitaet);
+        }               //Notwendig bei abspeichern in Textdokument
         if(filterSpeicher != null){
             filtern(filterSpeicher);
         }
