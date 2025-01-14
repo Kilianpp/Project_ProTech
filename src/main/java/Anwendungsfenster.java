@@ -32,7 +32,7 @@ public class Anwendungsfenster extends JFrame {
     private final Fehlermeldung fehlermeldung;
 
 
-    public Anwendungsfenster(Verwaltung verwaltung) {//Konstruktor
+    public Anwendungsfenster(Verwaltung verwaltung) {
         this.verwaltung = verwaltung;
         fehlermeldung = new Fehlermeldung();
         setTitle("Fitnesstracker");
