@@ -162,7 +162,7 @@ public class Anwendungsfenster extends JFrame {
     }
 
     private boolean prüfeWerte() {
-        //TODO Hanne
+
         int index = comboBoxAktivität.getSelectedIndex();
         if (index == 0) {
             fehler("Aktivität wählen");//Fehler ausgeben

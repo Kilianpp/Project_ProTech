@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "name": "Laufen",
+    "dateStr": "14-01-2025",
+    "dauer": 120,
+    "strecke": 10000,
+    "kalorienverbrauch": 580.0,
+    "aktivitaetspunkte": 11.0
+  },
+  {
+    "name": "Laufen",
+    "dateStr": "14-01-2025",
+    "dauer": 80,
+    "strecke": 10000,
+    "kalorienverbrauch": 620.0,
+    "aktivitaetspunkte": 12.0
+  },
+  {
+    "name": "Laufen",
+    "dateStr": "14-01-2025",
+    "dauer": 1,
+    "strecke": 10000,
+    "kalorienverbrauch": 699.0,
+    "aktivitaetspunkte": 13.0
+  },
+  {
+    "name": "Laufen",
+    "dateStr": "14-01-2025",
+    "dauer": 10,
+    "strecke": 10000,
+    "kalorienverbrauch": 690.0,
+    "aktivitaetspunkte": 13.0
+  }
+]
