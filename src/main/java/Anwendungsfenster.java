@@ -25,6 +25,7 @@ public class Anwendungsfenster extends JFrame {
     private JComboBox comboBoxSortieren;
     private JButton buttonSortieren;
     private JButton clearButton;
+    private JCheckBox speichernCheck;
     private Verwaltung verwaltung;
     private final DefaultTableModel datenmodell;
     private boolean absteigend = false;
@@ -79,7 +80,7 @@ public class Anwendungsfenster extends JFrame {
                 int strecke = Integer.parseInt(textFieldStrecke.getText());
                 int dauer = Integer.parseInt(textFieldDauer.getText());
                 Aktivitaet aktivitaet = new Aktivitaet(aktivitätsname, datum, dauer, strecke);
-                verwaltung.aktivitaetHinzufügen(aktivitaet);
+                verwaltung.aktivitaetHinzufügen(aktivitaet,speichernCheck.isSelected());
                 displayTable(verwaltung.getListe());
             }
         });

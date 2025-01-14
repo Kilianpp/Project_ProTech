@@ -23,7 +23,7 @@ public class Verwaltung{
         if(ListeAktivitaet.isEmpty()){
             aktivitaetHinzufügen(new Aktivitaet("Laufen", "04-05-2000", 30, 5000), false);
             aktivitaetHinzufügen(new Aktivitaet("Schwimmen", "05-05-2000", 15, 750), false);
-            aktivitaetHinzufügen(new Aktivitaet("Radfahren", "06-05-2000", 120, 64), false);
+            aktivitaetHinzufügen(new Aktivitaet("Radfahren", "06-05-2000", 120, 49000), false);
         }
         gefilterteListe = new ArrayList<>(ListeAktivitaet);
 

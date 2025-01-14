@@ -24,7 +24,7 @@ public class AktivitaetspunkteBerechnung {
         double kalorienVerbrauchStrecke = kalorienProKilometer * kilometer;
 
         // Gewichtung: Strecke und Dauer
-        return Math.round((kalorienVerbrauchStrecke - dauer) * 100) / 100.0;
+        return kalorienVerbrauchStrecke * (strecke / dauer) * 0.01;
     }
 
 
