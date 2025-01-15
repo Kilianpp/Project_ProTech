@@ -35,10 +35,10 @@ public class AktivitaetspunkteBerechnung {
 
     private double getKalorienProKilometer(String sportart) {
         return switch (sportart) {
-            case "laufen" -> 70.0;       // Kalorien pro Kilometer
-            case "radfahren" -> 35.0;
-            case "schwimmen" -> 90.0;
-            case "rudern" -> 40.0;
+            case "laufen" -> 60.0;       // Kalorien pro Kilometer
+            case "radfahren" -> 25.0;
+            case "schwimmen" -> 55.0;
+            case "rudern" -> 35.0;
             default ->
                     throw new IllegalArgumentException("Unbekannte Sportart: " + sportart + ". Unterstützt werden: 'laufen', 'radfahren', 'schwimmen', 'rudern'.");
         };
