@@ -37,7 +37,7 @@ public class Anwendungsfenster extends JFrame {
         fehlermeldung = new Fehlermeldung();
         setTitle("Fitnesstracker");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(775, 300);
+        setSize(1000, 500);
         setContentPane(Anwendungsfenster);
         setVisible(true);
         setPlaceHolder(textFieldDatum, "Bsp.: 25-01-25");
