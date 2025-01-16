@@ -1,8 +1,8 @@
 public class AktivitaetspunkteBerechnung {
-    /**
-     * Die Klasse AktivitaetspunkteBerechnung enthält Methoden zur Berechnung von Geschwindigkeit,
-     * Kalorienverbrauch und Aktivitätspunkten basierend auf sportlichen Aktivitäten.
-     */
+
+        // Die Klasse AktivitaetspunkteBerechnung enthält Methoden zur Berechnung von Geschwindigkeit,
+        // Kalorienverbrauch und Aktivitätspunkten basierend auf sportlichen Aktivitäten.
+
 
     private static final int AKTIVITAETSPUNKT_PRO_KALORIEN_FACTOR = 50; // 1 Aktivitätspunkt = 50 verbrannte Kalorien
 
@@ -27,12 +27,12 @@ public class AktivitaetspunkteBerechnung {
         return kalorienVerbrauchStrecke * (strecke / dauer) * 0.01;
     }
 
-
+        // Berechnung der Aktivitätspunkte in Abhähingkeit der verbrannten Kalorien
     public double berechneAktivitaetspunkte(double kalorien) {
         return Math.floor(kalorien / AKTIVITAETSPUNKT_PRO_KALORIEN_FACTOR);
-        // Pro 50 Kalorien wird 1 Aktivitätspunkt vergeben
-    }
 
+    }
+        // Kalorien pro Kilometer lassen sich genauer bestimmen als pro Meter
     private double getKalorienProKilometer(String sportart) {
         return switch (sportart) {
             case "laufen" -> 60.0;       // Kalorien pro Kilometer
@@ -41,7 +41,9 @@ public class AktivitaetspunkteBerechnung {
             case "rudern" -> 35.0;
             default ->
                     throw new IllegalArgumentException("Unbekannte Sportart: " + sportart + ". Unterstützt werden: 'laufen', 'radfahren', 'schwimmen', 'rudern'.");
+
         };
+
     }
 
 }
