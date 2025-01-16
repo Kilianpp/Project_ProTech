@@ -21,9 +21,9 @@ public class Verwaltung{
         materialLader = new RessourcenLader();                            //Notwendig bei abspeichern in Textdokument
         ListeAktivitaet = new ArrayList<>(materialLader.listeLesen());      //Notwendig bei abspeichern in Textdokument
         if(ListeAktivitaet.isEmpty()){
-            aktivitaetHinzufügen(new Aktivitaet("Laufen", "04-05-2000", 30, 4000), false);
-            aktivitaetHinzufügen(new Aktivitaet("Rudern", "05-05-2000", 120, 14000), false);
-            aktivitaetHinzufügen(new Aktivitaet("Radfahren", "06-05-2000",180, 22000), false);
+            aktivitaetHinzufügen(new Aktivitaet("Laufen", "15-01-2025", 30, 4000), false);
+            aktivitaetHinzufügen(new Aktivitaet("Rudern", "10-06-2024", 120, 14000), false);
+            aktivitaetHinzufügen(new Aktivitaet("Radfahren", "06-08-2024",180, 22000), false);
         }
         gefilterteListe = new ArrayList<>(ListeAktivitaet);
 
