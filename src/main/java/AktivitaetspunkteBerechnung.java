@@ -29,7 +29,7 @@ public class AktivitaetspunkteBerechnung {
 
         // Berechnung der Aktivitätspunkte in Abhähingkeit der verbrannten Kalorien
     public double berechneAktivitaetspunkte(double kalorien) {
-        return Math.floor(kalorien / AKTIVITAETSPUNKT_PRO_KALORIEN_FACTOR);
+        return Math.round(kalorien / AKTIVITAETSPUNKT_PRO_KALORIEN_FACTOR);
 
     }
         // Kalorien pro Kilometer lassen sich genauer bestimmen als pro Meter
